@@ -14,9 +14,6 @@ const VendorDashboard = () => {
 
 
   const [ passengerCount , setPassengerCount  ] = useState('')
-  const [ busCount , setBusCount ] = useState("")
-  const [ bookCount , setBookCount ] = useState("")
-  const [ transCount , setTransCount ] = useState("")
 
   const fetchData = async () => {
     try{
@@ -27,38 +24,8 @@ const VendorDashboard = () => {
     }
   }
 
-  const fetchData2 = async () => {
-    try{
-      const { data } = await axios.get("https://5o53oluanh.execute-api.ap-south-1.amazonaws.com/development/FindBusRouter/getBusesByAdmin")
-      setBusCount(data.length)
-    }catch(e) { 
-      console.log(e)
-    }
-  }
-
-  const fetchData3= async () => {
-    try{
-      const { data } = await axios.get("https://5o53oluanh.execute-api.ap-south-1.amazonaws.com/development/BookingRouter/getbookingByAdmin")
-      setBookCount(data.length)
-    }catch(e) { 
-      console.log(e)
-    }
-  }
-
-  const fetchData4= async () => {
-    try{
-      const { data } = await axios.get( "https://5o53oluanh.execute-api.ap-south-1.amazonaws.com/development/paymentRouter/users/getAllPaymentsByAdmin")
-      setTransCount(data.details.length)
-    }catch(e) { 
-      console.log(e)
-    }
-  }
-
   useEffect(( ) => {
     fetchData()
-    fetchData2()
-    fetchData3()
-    fetchData4()
   },[])
 
 
@@ -75,21 +42,21 @@ const VendorDashboard = () => {
     {
       progress: "bg-blue-400",
       title: "All Buses",
-      number: busCount,
+      number: "10",
       icon: <FaUserFriends className="text-2xl text-[rgb(240,72,88)]" />,
       link : '/transaction'
     },
     {
       progress: "bg-blue-400",
       title: "All Bookings",
-      number: bookCount,
+      number: "10",
       icon: <FaUserFriends className="text-2xl text-[rgb(240,72,88)]" />,
       link : '/order'
     },
     {
       progress: "bg-blue-400",
       title: "All Transactions",
-      number: transCount,
+      number: "10",
       icon: <FaUserFriends className="text-2xl text-[rgb(240,72,88)]" />,
       link : '/trans'
     },  

@@ -48,7 +48,7 @@ const VendorDashboard = () => {
   const fetchData4= async () => {
     try{
       const { data } = await axios.get( "https://5o53oluanh.execute-api.ap-south-1.amazonaws.com/development/paymentRouter/users/getAllPaymentsByAdmin")
-      setTransCount(data.details.length)
+      setTransCount(data.length)
     }catch(e) { 
       console.log(e)
     }
@@ -89,7 +89,7 @@ const VendorDashboard = () => {
     {
       progress: "bg-blue-400",
       title: "All Transactions",
-      number: transCount,
+      number: "10",
       icon: <FaUserFriends className="text-2xl text-[rgb(240,72,88)]" />,
       link : '/trans'
     },  
